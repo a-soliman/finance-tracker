@@ -11,9 +11,7 @@
   <body>
     <%= render "layouts/navigation" %>
     <div class="container">
-      <!-- Flash -->
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render "layouts/flash" %>
       <%= yield %>
     </div>
   </body>
