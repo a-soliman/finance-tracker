@@ -11,6 +11,19 @@
 - npm 9.5.0
 - yarn 1.22.11
 
+## Setting credentials
+
+*code in `"code --wait"` is for VSCode, exchange it with your editor of choice*
+
+```bash
+EDITOR="code --wait" rails credentials:edit
+```
+
+```yml
+polygon:
+  api_key: "YOUR_KEY"
+```
+
 ## Development
 1. install dependencies `bundle install`
 2. install node dependencies `npm i`
