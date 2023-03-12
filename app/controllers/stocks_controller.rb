@@ -1,4 +1,4 @@
-class StocksController < ApplicationController
+class StocksController < ApplicationController  
   def search
     symbol_param = params[:stock]
     unless symbol_param.present?

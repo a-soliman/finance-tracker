@@ -1,17 +1,15 @@
 <h1 class="mb-5">Portfolio</h1>
 <h3>Search Stopcks</h3>
-<%= form_tag( search_stock_path , method: :get) do |f| %>
+<%= form_tag( search_stock_path, method: :get) do |f| %>
   <div class="input-group input-group-lg">
     <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control", aria_label: "Text input with segmented dropdown button" %>
-    <%= button_tag type: :submit, class: "btn btn-outline-success" do%>
+    <%= button_tag type: :submit, class: "btn btn-outline-success" do %>
       <i class="bi bi-search"></i>
     <% end %>
   </div>
 <% end %>
-<% if @stock %>
-  <div class="card card-header d-flex flex-row mt-5">
-    <strong>Symbol: </strong> <%= @stock.ticker %>
-    <strong>Name: </strong> <%= @stock.name %>
-    <strong>Price: </strong> <%= @stock.price %>
-  </div>
-<% end %>
+
+<div id="results">
+  <%= render "users/result" %>
+</div>
+
