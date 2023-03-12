@@ -7,6 +7,11 @@ class StocksController < ApplicationController
       return
     end
     @stock = Stock.new_lookup(symbol_param)
-    render 'users/portfolio'
+    if @stock
+      render 'users/portfolio'
+    else
+      flash.now[:alert] = 'Please enter a valid symbol to search'
+      render 'users/portfolio', status: :bad_request
+    end
   end
 end
