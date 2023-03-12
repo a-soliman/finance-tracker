@@ -1,7 +1,9 @@
-<% if @stock %>
-  <div class="card card-header d-flex flex-row mt-5">
-    <strong>Symbol: </strong> <%= @stock.ticker %>
-    <strong>Name: </strong> <%= @stock.name %>
-    <strong>Price: </strong> <%= @stock.price %>
-  </div>
-<% end %>
+<div id="results">
+  <% if @stock %>
+    <div class="card card-header d-flex flex-row mt-5">
+      <strong>Symbol: </strong> <%= @stock.ticker %>
+      <strong>Name: </strong> <%= @stock.name %>
+      <strong>Price: </strong> <%= @stock.price %>
+    </div>
+  <% end %>
+</div>
