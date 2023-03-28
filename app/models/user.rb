@@ -7,7 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def can_track_stock?(ticker_symbol)
-    puts "#{stocks.inspect}"
     under_stock_limit? && !stock_already_tracked?(ticker_symbol)
   end
 
@@ -17,9 +16,7 @@ class User < ApplicationRecord
 
   def stock_already_tracked?(ticker_symbol)
     stock = Stock.check_db(ticker_symbol)
-    puts "\n\nmaybe here: #{stock.inspect} - #{ticker_symbol}\n\n"
     return false unless stock
-    puts "\n\n\nhere"
     stocks.where(id: stock.id).exists?
   end
 end

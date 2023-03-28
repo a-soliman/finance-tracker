@@ -11,9 +11,4 @@ class UserStocksController < ApplicationController
     flash[:notice] = "Stock #{stock.name}, was successfully added to your portfolio"
     redirect_to portfolio_path
   end
-
-  private
-  def stock_params
-    params.require(:stock).permit(:ticker)
-  end
 end
