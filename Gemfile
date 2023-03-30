@@ -74,6 +74,7 @@ group :development do
   
   # Required by gem 'htmlbeautifier' vsCode extension
   gem 'htmlbeautifier'
+  gem 'hirb'
 end
 
 group :test do

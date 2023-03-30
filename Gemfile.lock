@@ -98,6 +98,7 @@ GEM
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hirb (0.7.3)
     htmlbeautifier (1.4.2)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
@@ -237,6 +238,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   devise-bootstrap-views (~> 1.0)
+  hirb
   htmlbeautifier
   httparty (~> 0.21.0)
   jbuilder
