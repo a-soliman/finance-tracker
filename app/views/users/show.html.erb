@@ -1,0 +1,30 @@
+<h2>User details:</h2>
+<div class="card card-header my-5">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= full_name(@user) %></th>
+      <td><%= @user.email %></td>
+      <td></td>
+      <td>
+        <% if current_user.can_follow?(@user) %>
+          <%= link_to "Follow", friendships_path(id: @user.id),  data: { turbo_method: :post }, class: "btn btn-sm btn-outline-success" %>
+        <% else %>
+          <button class="btn btn-outline-secondary btn-sm" disabled>Following</button>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+<h2>Stocks:</h2>
+<%= render  "stocks/list", stocks: @user.stocks %>

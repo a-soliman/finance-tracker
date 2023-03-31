@@ -3,6 +3,15 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def show
+    if params[:id].to_i == current_user.id
+      redirect_to portfolio_path
+    end
+    @user = User.find(params[:id])
+    puts "\n\nfound user = #{@user.inspect}"
+    puts " currentUser: #{current_user.inspect}"
+  end
+
   def search
     term = params[:friend]
     unless term.present?
