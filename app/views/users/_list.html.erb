@@ -13,7 +13,7 @@
         <th scope="row"><%= full_name(user) %></th>
         <td><%= user.email %></td>
         <td>
-          <%= link_to "Unfollow", friendships_path(user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+          <%= link_to "Unfollow", friendships_path(id: user.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
         </td>
     </tr>
     <% end %>
