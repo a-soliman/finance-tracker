@@ -1,0 +1,21 @@
+<% if users %>
+<table class="table table-bordered table-hover my-5">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user|%>
+      <tr>
+        <th scope="row"><%= full_name(user) %></th>
+        <td><%= user.email %></td>
+        <td>
+          <%= link_to "Unfollow", friendships_path(user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+        </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
