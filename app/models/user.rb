@@ -21,4 +21,31 @@ class User < ApplicationRecord
     return false unless stock
     stocks.where(id: stock.id).exists?
   end
+
+  def can_follow?(user)
+    !following?(user)
+  end
+
+  def following?(user)
+    friends.where(id: user.id).exists?
+  end
+
+  def self.search(term, execlude = [])
+    fields = ['first_name', 'last_name', 'email']
+    results = []
+
+    fields.each do |field|
+      field_results = matches(field, term).reject { |user| user.id.in?(execlude)}
+      results = (results + field_results).uniq
+    end
+
+    return nil unless results.count > 0
+    results
+  end
+
+  private
+
+  def self.matches(field, term)
+    where("#{field} like ?", "%#{term}%")
+  end
 end

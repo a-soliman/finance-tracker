@@ -1,1 +1,14 @@
+<h1 class="mb-5">Friends</h1>
+<h3>Search Friends</h3>
+
+<%= form_tag( search_friend_path, data: {'turbo-stream': 'friend'}, method: :get) do |f| %>
+  <div class="input-group input-group-lg">
+    <%= text_field_tag :friend, params[:friend], placeholder: "Name or Email", autofocus: true, class: "form-control", aria_label: "Text input with segmented dropdown button" %>
+    <%= button_tag type: :submit, class: "btn btn-outline-success" do %>
+      <i class="bi bi-search"></i>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "stocks/result" %>
 <%= render "users/list", users: @user.friends %>

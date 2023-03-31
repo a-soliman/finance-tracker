@@ -9,7 +9,7 @@ class StocksController < ApplicationController
     @stock = Stock.new_lookup(symbol_param)
     if @stock
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('results', partial: 'users/result', locals: { stock: @stock }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('results', partial: 'stocks/result', locals: { stock: @stock }) }
       end
     else
       flash[:alert] = 'Please enter a valid symbol to search'

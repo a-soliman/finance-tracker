@@ -1,20 +1,31 @@
 <div id="results">
-  <% if @stock %>
-    <div class="card card-header d-flex flex-row justify-content-evenly align-items-center mt-5">
-      <strong>Symbol: </strong> <%= @stock.ticker %>
-      <strong>Name: </strong> <%= @stock.name %>
-      <strong>Price: </strong> <%= @stock.price %>
-      <% if current_user.can_track_stock?(@stock.ticker) %>
-        <%= link_to  "Add to portfolio", user_stocks_path(ticker: @stock.ticker),  data: { turbo_method: :post }, class: "btn btn-xs btn-outline-success" %>
-      <% else %>
-        <span class="badge text-bg-secondary">You are already tracking 
-          <% if !current_user.under_stock_limit? %>
-            10 stocks
-          <% else %>
-            this stock
+  <% if @users %>
+    <div class="card card-header mt-5">
+      <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user|%>
+          <tr>
+            <th scope="row"><strong>Name: </strong> <%= full_name(user) %></th>
+            <td><strong>Email </strong> <%= user.email %></td>
+            <td><strong>Profile </strong> <%= link_to  "View profile", '#', class: "btn btn-xs btn-outline-info" %></td>
+            <td>
+              <% if current_user.can_follow?(user) %>
+                <%= link_to  "Follow", friendships_path(id: user.id),  data: { turbo_method: :post }, class: "btn btn-xs btn-outline-success" %>
+              <% else %>
+                <span class="badge text-bg-secondary">You are already following <%= full_name(user)%></span>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
-        </span>
-      <% end %>
-    </div>
+      </tbody>
+    </table>
+  </div>
   <% end %>
 </div>
